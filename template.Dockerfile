@@ -5,9 +5,9 @@ RUN unzip /var/local/cectf/cectf-frontend.zip -d /var/local/cectf/ && \
     mv /var/local/cectf/cectf.github.io-master/ /var/local/cectf/www/ && \
     rm /var/local/cectf/cectf-frontend.zip
 
-RUN apk update && \
+RUN apk update #&& \
     # Python
-    apk add python3 && \
+RUN apk add python3 && \
     apk add python3-dev && \
     # cectf_server dependencies
     apk add libffi && \

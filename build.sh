@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bash build-dockerfile.sh ubuntu
-docker build -t cectf-server:latest .
+DOCKER_BUILDKIT=1 docker build -t cectf-server:latest .

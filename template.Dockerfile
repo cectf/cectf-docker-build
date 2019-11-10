@@ -13,6 +13,7 @@ RUN apk update && \
     apk add libffi && \
     apk add libffi-dev && \
     apk add musl-dev && \
+    apk add linux-headers && \
     apk add gcc && \
     pip3 install cectf-server && \
     # uwsgi

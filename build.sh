@@ -17,5 +17,11 @@ cat Dockerfile.template \
 echo "Building image..."
 docker build -t 127.0.0.1:5000/cectf-server:latest .
 
+if [[ $? != 0 ]]; then
+  echo "Build failed, aborting"
+  echo "APK installation can be flaky on Raspberry PI, perhaps retrying will get it past the problematic build stage"
+  exit 1
+fi
+
 echo "Uploading image to private registry..."
 docker push 127.0.0.1:5000/cectf-server:latest

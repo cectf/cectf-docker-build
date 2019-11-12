@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   cectf-server:
     image: 127.0.0.1:5000/cectf-server:latest
@@ -6,6 +6,7 @@ services:
       replicas: 3
     ports:
       - "443:443"
+      - "80:80"
     volumes:
       - config:/usr/var/cectf_server-instance/
       - challenge-files:/var/local/cectf/files/

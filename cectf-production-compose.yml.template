@@ -1,0 +1,25 @@
+version: '3'
+services:
+  cectf-server:
+    image: 127.0.0.1:5000/cectf-server:latest
+    deploy:
+      replicas: 3
+    ports:
+    - "80:80"
+    volumes:
+    - config:/usr/var/cectf_server-instance/
+    - challenge-files:/var/local/cectf/files/
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=%%nfs_host_ip%%,soft,nolock,rw
+      device: ":%%production_config%%"
+  challenge-files:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=%%nfs_host_ip%%,soft,nolock,rw
+      device: ":%%production_challenge_files%%"
+

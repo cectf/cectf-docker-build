@@ -1,4 +1,21 @@
 #!/bin/bash
 
-bash build-dockerfile.sh ubuntu
-docker build -t cectf-server:latest .
+if [[ `lscpu | grep armv7l` != "" ]]; then
+  echo "Detected armv7l architecture"
+  image="arm32v6/alpine:latest"
+else
+  echo "Detected non-armv7l architecture"
+  image="alpine"
+fi
+
+echo "Using base image $image..."
+
+cat Dockerfile.template \
+  | sed -r "s!%%image%%!$image!g" \
+  > Dockerfile
+
+echo "Building image..."
+docker build -t 127.0.0.1:5000/cectf-server:latest .
+
+echo "Uploading image to private registry..."
+docker push 127.0.0.1:5000/cectf-server:latest

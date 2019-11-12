@@ -1,3 +1,4 @@
+FROM %%image%%
 LABEL maintainer="Daniel Chiquito <daniel.chiquito@gmail.com>"
 
 ADD https://github.com/cectf/cectf.github.io/archive/master.zip /var/local/cectf/cectf-frontend.zip

@@ -1,1 +1,6 @@
-/Dockerfile
+
+Dockerfile
+
+nfs-env.sh
+
+cectf-*-compose.yml

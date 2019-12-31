@@ -13,9 +13,9 @@ Set the correct values in `nfs-env.sh` and run `./setup-compose.sh` to generate 
 ## Private Registry
 
 I rely on a private registry to host all of the Docker images once they are built.
-The docker compose file `cectf-registry-compose.yml` can be used to quickly and easily bring up this registry:
+The docker compose file `registry-compose.yml` can be used to quickly and easily bring up this registry:
 
-`docker stack up -c cectf-registry-compose.yml registry`
+`docker stack up -c registry-compose.yml registry`
 
 The registry will now be available to any node in the swarm on `127.0.0.1:5000`. You can visit it at `http://10.11.12.13:5000/v2/_catalog` (replace with the IP of one of your nodes) to confirm that it is running and hosting images.
 
@@ -27,9 +27,9 @@ Simply run `./build.sh`. It will automatically detect if you are on a Raspberry 
 
 To bring up either the staging or production environments, simply log in to the swarm manager and do one of:
 
-`docker stack up -c cectf-staging-compose.yml staging`
+`docker stack up -c staging-compose.yml staging`
 
-`docker stack up -c cectf-production-compose.yml production`
+`docker stack up -c production-compose.yml production`
 
 To take down the application, do `docker stack rm staging` or `docker stack rm production`
 

@@ -5,14 +5,16 @@ services:
     deploy:
       replicas: 3
     ports:
-      - "8080:443"
+      - "27871:80"
     volumes:
       - config:/usr/var/cectf_server-instance/
       - challenge-files:/var/local/cectf/files/
-    secrets:
-      - chained.pem
-      - domain.key
-      - dhparam.pem
+networks:
+  default:
+    internal: true
+  staging_net:
+    external: true
+    name: staging_net
 volumes:
   config:
     driver: local
@@ -26,10 +28,3 @@ volumes:
       type: nfs
       o: addr=%%nfs_host_ip%%,soft,nolock,rw
       device: ":%%staging_challenge_files%%"
-secrets:
-  chained.pem:
-    file: ./secrets/chained.pem
-  domain.key:
-    file: ./secrets/domain.key
-  dhparam.pem:
-    file: ./secrets/dhparam.pem

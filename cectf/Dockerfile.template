@@ -53,7 +53,7 @@ COPY nginx.conf /etc/nginx/
 COPY conf.d/cectf_server.conf /etc/nginx/conf.d/
 COPY supervisord.ini /etc/supervisor.d/supervisord.ini
 
-EXPOSE 443
+EXPOSE 80
 
 CMD ["supervisord"]
 

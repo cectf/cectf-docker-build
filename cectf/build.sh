@@ -15,7 +15,7 @@ cat Dockerfile.template \
   > Dockerfile
 
 echo "Building image..."
-docker build -t 127.0.0.1:5000/cectf-server:latest .
+docker build -t 127.0.0.1:5000/cectf-server:latest . $1
 
 if [[ $? != 0 ]]; then
   echo "Build failed, aborting"

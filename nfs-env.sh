@@ -1,8 +1,8 @@
 
 # Update these variables as appropriate for your NFS environment
 
-export CECTF_NFS_HOST_IP="127.0.0.1"
-export CECTF_STAGING_CONFIG="/mnt/ctf-staging-config"
-export CECTF_STAGING_CHALLENGE_FILES="/mnt/ctf-staging-files"
-export CECTF_PRODUCTION_CONFIG="/mnt/ctf-production-config"
-export CECTF_PRODUCTION_CHALLENGE_FILES="/mnt/ctf-production-files"
+export CECTF_NFS_HOST_IP="192.168.0.113"
+export CECTF_STAGING_CONFIG="/volume1/ctf-staging-config"
+export CECTF_STAGING_CHALLENGE_FILES="/volume1/ctf-staging"
+export CECTF_PRODUCTION_CONFIG="/volume1/ctf-production-config"
+export CECTF_PRODUCTION_CHALLENGE_FILES="/volume1/ctf-production"

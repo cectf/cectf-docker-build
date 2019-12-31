@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  cectf-server:
+    image: 127.0.0.1:5000/cectf-server:latest
+    deploy:
+      replicas: 3
+    ports:
+      - "27871:80"
+    volumes:
+      - config:/usr/var/cectf_server-instance/
+      - challenge-files:/var/local/cectf/files/
+networks:
+  default:
+    internal: true
+  staging_net:
+    external: true
+    name: staging_net
+volumes:
+  config:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.0.113,soft,nolock,rw
+      device: ":/volume1/ctf-staging-config"
+  challenge-files:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.0.113,soft,nolock,rw
+      device: ":/volume1/ctf-staging"

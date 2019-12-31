@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  nginx:
+    image: 127.0.0.1:5000/loadbalancer:latest
+    deploy:
+      replicas: 1
+    ports:
+      - "443:443"
+      - "80:80"
+    secrets:
+      - production-chained.pem
+      - production-domain.key
+      - production-dhparam.pem
+      - staging-chained.pem
+      - staging-domain.key
+      - staging-dhparam.pem
+secrets:
+  production-chained.pem:
+    file: /var/local/secrets/production/chained.pem
+  production-domain.key:
+    file: /var/local/secrets/production/domain.key
+  production-dhparam.pem:
+    file: /var/local/secrets/production/dhparam.pem
+  staging-chained.pem:
+    file: /var/local/secrets/staging/chained.pem
+  staging-domain.key:
+    file: /var/local/secrets/staging/domain.key
+  staging-dhparam.pem:
+    file: /var/local/secrets/staging/dhparam.pem
